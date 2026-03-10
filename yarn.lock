@@ -1790,6 +1790,11 @@ supports-color@^7.1.0:
   dependencies:
     has-flag "^4.0.0"
 
+sweetalert2@^11.26.22:
+  version "11.26.22"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.26.22.tgz#898838958d02d26067da1eb37f552a717cef1b2b"
+  integrity sha512-UtfV5j7gXBRLm0+6Vm+MqIpsMA7CF7lOGeBj1sc8YSb2Q2xKT6mkSV63b4kFUGNs4vYa+Nd7ufZ97ZX9hNfqsA==
+
 throttle-debounce@^5.0.0, throttle-debounce@^5.0.2:
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/throttle-debounce/-/throttle-debounce-5.0.2.tgz#ec5549d84e053f043c9fd0f2a6dd892ff84456b1"
