@@ -9,25 +9,24 @@
 }
 
 .login-container {
-    display: flex;
     width: 100%;
-    max-width: 860px;
+    max-width: 880px;
     height: 480px;
     background: #fff;
     border-radius: 16px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
     overflow: hidden;
     margin: 5px auto;
-    border: 3px solid #248fc1;
+    border: 2px solid #dee0e0;
 }
 
 .login-form-side {
-    flex: 1 1 50%;
     padding: 48px 64px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     background-color: #fff;
+    height: 100%; /* ให้ความสูงเต็มพื้นที่ของ Row */
 }
 
 .login-form-content {
@@ -56,11 +55,18 @@
     letter-spacing: 1px;
 }
 
+.login-logo-image {
+    max-height: 100px;
+    width: auto;
+    object-fit: contain;
+}
+
 .login-logo-subtitle {
-    color: #00a69c;
-    font-weight: 600;
-    font-size: 15px;
-    margin-top: 12px;
+    color: #3f5663 !important; /* !important เพื่อบังคับให้ค่านี้มีผล */
+    font-weight: 600 !important;
+    font-size: 16px !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
     display: block;
 }
 
@@ -80,13 +86,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-}
-
-.login-footer-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 
 .login-footer-text {
@@ -96,12 +95,11 @@
 }
 
 .login-image-side {
-    flex: 1 1 60%;
-    background-image: url("/bg-medical.png");
+    background-image: url("/bg-project2.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    position: relative;
+    height: 100%; /* ให้ภาพแสดงเต็มกรอบขวาของ Row */
 }
 
 /* --- Responsive Rules --- */
@@ -111,17 +109,13 @@
     }
     
     .login-container {
-        max-width: 420px;       /* Smaller max-width for phone screens */
+        max-width: 420px;       /* ปรับความกว้างให้พอดีมือถือ */
         height: auto;
         min-height: 500px;
     }
     
     .login-form-side {
         padding: 32px 24px;
-        flex: 1 1 100%;         /* Give form full width */
-    }
-    
-    .login-image-side {
-        display: none;          /* Hide image on small screens */
+        min-height: 500px; /* ยืดกล่องฟอร์มให้ครอบคลุมความสูงขั้นต่ำ */
     }
 }
