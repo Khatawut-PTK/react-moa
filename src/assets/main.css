@@ -20,3 +20,46 @@ body {
 }
 
 /******************************************************/
+
+/* Navbar Styles */
+.admin-header-container {
+    background: #002140 !important; 
+    padding: 8px 24px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important; /* ให้ผู้ดูแลระบบไปอยู่ขวาสุด */
+    border-bottom: 1px solid #f0f0f0 !important;
+    height: auto !important;
+    line-height: normal !important;
+}
+
+.admin-navbar-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.admin-navbar-title.ant-typography {
+    color: #cecbcb !important;
+    margin-top: 0 !important;
+    margin: 10px !important;
+    font-size: 14px !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.admin-navbar-title-user.ant-typography {
+    color: #9a9898 !important;
+    margin-top: -13px !important;
+    line-height: 1.2 !important;
+    margin-right: 4px !important;
+    font-size: 10px !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.admin-navbar-title.ant-typography .ant-avatar {
+    margin-right: 8px !important;
+    margin-left: 10px !important;
+}

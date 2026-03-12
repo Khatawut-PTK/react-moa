@@ -1,35 +1,47 @@
+import { useState, useEffect } from "react";
 import { 
-    Layout, 
-    Row, 
-    Col, 
-    Menu, 
-    Button, 
-    Typography 
-} from 'antd';
+  Layout, 
+  Typography, 
+} from "antd";
+import { Avatar } from "antd";
+import { UserOutlined } from "@ant-design/icons";
+import formatDateTime from "../utils/dateTime";
 
 const { Header } = Layout;
-const { Title, Text } = Typography;
+const { Title } = Typography;
 
 function Navbar() {
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  useEffect(() => {
+    const timerId = setInterval(() => setCurrentTime(new Date()), 1000);
+    return () => clearInterval(timerId);
+  }, []);
+
   return (
     <>
-        <Header
-        >
-           <Row 
-           justify='space-between' 
-           align='middle'
-           style={{ padding: 0 }}
-           >
-            <Col>
-                <Title level={5}>MOA</Title>
-            </Col>
-            <Col>
-                <Button type='text'>Logout</Button>
-            </Col>
-           </Row>
-        </Header>
+      <Header className="admin-header-container">
+        <div className="admin-navbar-section">
+          <Title level={5} className="admin-navbar-title">
+              {formatDateTime(currentTime)}
+            <Avatar
+              size="middle"
+              style={{ 
+                backgroundColor: "#fff", 
+                color: "#002140", 
+                fontSize: "15px"
+              }}
+              icon={<UserOutlined />}
+            />
+            ผู้ดูแลระบบ
+          </Title>
+          <Title level={5} className="admin-navbar-title-user">
+              ผู้ดูแลระบบขั้นสูง
+          </Title>
+        </div>
+      </Header>
     </>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;
