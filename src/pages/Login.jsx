@@ -1,4 +1,5 @@
-import React from 'react';
+import { useState } from 'react';
+
 import { 
     Button, 
     Checkbox, 
@@ -19,14 +20,17 @@ import {
     UserOutlined,
     LockOutlined,
 } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 
 const { Text, Title } = Typography;
 
 const Login = () => {
+    const navigate = useNavigate();
+
     const onFinish = (values) => {
         console.log('Success:', values);
         showSuccess('เข้าสู่ระบบสำเร็จ');
-        
+        navigate('/dashboard');
     };
 
     const onFinishFailed = (errorInfo) => {
@@ -38,7 +42,6 @@ const Login = () => {
         <div className="login-wrapper">
             <div className="login-container">
                 <Row style={{ height: '100%' }}>
-                    {/* ใช้ Col ของ Ant Design จัดการ Layout แบ่งครึ่งจอเพื่อ Maintain ง่ายขึ้น */}
                     <Col xs={24} md={12} className="login-form-side"> 
                         <div className="login-form-content">
                             <div className="login-logo-section">
@@ -113,14 +116,13 @@ const Login = () => {
                         </div>
 
                         <div className="login-footer">
-                            <Space direction="vertical" size={2} align="center">
+                            <Space orientation="vertical" size={2} align="center">
                                 <Text className="login-footer-text">@ 2026 | Systeam Moa V0.1</Text>
                                 <Text className="login-footer-text">บริษัท อาร์คติค เทคนิคอล จำกัด</Text>
                             </Space>
                         </div>
                     </Col>
 
-                    {/* ซ่อนภาพพื้นหลังสำหรับหน้าจอมือถือโดยอัตโนมัติ (xs={0}) */}
                     <Col xs={0} md={12} className="login-image-side"></Col>
                 </Row>
             </div>

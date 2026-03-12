@@ -1,5 +1,5 @@
 import Swal from "sweetalert2";
-import 'sweetalert2/dist/sweetalert2.min.css';
+import '../assets/main.css';
 
 export const showSuccess = (message = 'ดำเนินการเรียบร้อย') => {
     return Swal.fire({
