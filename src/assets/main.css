@@ -1,9 +1,12 @@
-/* บังคับทุกส่วนของ SweetAlert2 */
+body {
+    font-family: 'Prompt', sans-serif !important;
+}
+
+/* SweetAlert2 */
 .swal2-container {
     font-family: 'Prompt', sans-serif !important;
 }
 
-/* หากต้องการเจาะจงขนาดแยกตามส่วน */
 .swal2-title {
     font-weight: 600;
 }
@@ -15,3 +18,5 @@
 .swal2-confirm, .swal2-cancel {
     font-family: 'Prompt', sans-serif !important;
 }
+
+/******************************************************/
