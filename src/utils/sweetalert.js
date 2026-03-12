@@ -1,4 +1,5 @@
 import Swal from "sweetalert2";
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 export const showSuccess = (message = 'ดำเนินการเรียบร้อย') => {
     return Swal.fire({
@@ -18,7 +19,9 @@ export const showError = (message = 'เกิดข้อผิดพลาด�
         title: 'ผิดพลาด',
         text: message,
         icon: 'error',
-        confirmButtonText: 'ตกลง',
+        timer: 1500,
+        showConfirmButton: false,
+        allowOutsideClick: false,
         confirmButtonColor: '#d33',
     });
 };

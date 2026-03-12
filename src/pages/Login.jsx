@@ -7,10 +7,28 @@ import {
     Typography 
 } from 'antd';
 import '../assets/login.css';
+import { 
+    showSuccess, 
+    showError 
+} from '../utils/sweetalert';
+import { 
+    UserOutlined,
+    LockOutlined,
+} from '@ant-design/icons';
 
-const { Title, Text } = Typography;
+const { Text } = Typography;
 
 const Login = () => {
+    const onFinish = (values) => {
+        console.log('Success:', values);
+        showSuccess('เข้าสู่ระบบสำเร็จ');
+    };
+
+    const onFinishFailed = (errorInfo) => {
+        console.log('Failed:', errorInfo);
+        showError('เข้าสู่ระบบไม่สำเร็จ');
+    };
+
     return (
         <div className="login-wrapper">
             <div className="login-container">
@@ -32,28 +50,33 @@ const Login = () => {
                             name="login"
                             layout="vertical"
                             size="large"
+                            onFinish={onFinish}
+                            onFinishFailed={onFinishFailed}
                         >
                             <Form.Item
                                 name="username"
-                                rules={[{ required: true, message: 'Please input your Username!' }]}
+                                rules={[{ required: true, message: 'กรุณากรอกชื่อผู้ใช้' }]}
                                 className="login-form-item"
+                                style={{ marginBottom: '25px' }}
                             >
                                 <Input 
-                                    placeholder="Username" 
+                                    placeholder="ชื่อผู้ใช้" 
                                     variant="filled"
                                     className="login-input"
+                                    prefix={<UserOutlined style={{ color: '#bfbfbf' }} />}
                                 />
                             </Form.Item>
                             
                             <Form.Item
                                 name="password"
-                                rules={[{ required: true, message: 'Please input your Password!' }]}
+                                rules={[{ required: true, message: 'กรุณากรอกรหัสผ่าน' }]}
                                 className="login-form-item"
                             >
                                 <Input.Password
-                                    placeholder="Password"
+                                    placeholder="รหัสผ่าน"
                                     variant="filled"
                                     className="login-input"
+                                    prefix={<LockOutlined style={{ color: '#bfbfbf' }} />}
                                 />
                             </Form.Item>
                 
