@@ -5,18 +5,22 @@ const { Title } = Typography;
 
 const Dashboard = () => {
   const items = [
-    { title: "จำนวนผู้ใช้งาน", value: 10 },
-    { title: "จำนวนอุปกรณ์ทั้งหมด", value: 10 },
-    { title: "จำนวนอุปกรณ์ที่ยืม", value: 10 },
+    { title: "ผู้ใช้งาน", value: 10 },
+    { title: "อุปกรณ์ทั้งหมด", value: 10 },
+    { title: "อุปกรณ์ที่ยืม", value: 10 },
   ];
 
   return (
-    <div>
+    <>
+      <Title 
+        level={4} 
+        style={{ 
+          marginBottom: 8, 
+          marginTop: 5 
+        }}>
+        ภาพรวมผลการดำเนินงาน
+      </Title>
       <Card>
-        <div style={{ marginBottom: 0 }}>
-          <Title level={5}>ภาพรวมผลการดำเนินงาน</Title>
-        </div>
-
         <div
           style={{
             display: "grid",
@@ -31,12 +35,12 @@ const Dashboard = () => {
               style={{ backgroundColor: "#f0f2f5", textAlign: "center" }}
             >
               <Title level={5}>{item.title}</Title>
-              <Title style={{ fontSize: 24, margin: 0 }}>{item.value}</Title>
+              <Title style={{ fontSize: 13, margin: 0 }}>{item.value}</Title>
             </Card>
           ))}
         </div>
       </Card>
-    </div>
+    </>
   );
 };
 

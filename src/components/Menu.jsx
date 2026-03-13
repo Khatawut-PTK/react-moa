@@ -5,6 +5,8 @@ import {
   DashboardOutlined,
   UserOutlined,
   LogoutOutlined,
+  SettingOutlined,
+  ProjectOutlined,
 } from "@ant-design/icons";
 
 function AppMenu() {
@@ -26,7 +28,7 @@ function AppMenu() {
           fontSize: "13px",
           display: "flex",
           flexDirection: "column",
-          height: "calc(100vh - 48px)",
+          height: "calc(90vh - 48px)",
           borderRight: 0,
         }}
         items={[
@@ -35,12 +37,25 @@ function AppMenu() {
             icon: <DashboardOutlined />,
             label: "แดชบอร์ด",
           },
+          { type: "divider" },
+          {
+            key: "project",
+            icon: <ProjectOutlined />,
+            label: "โครงการ",
+          },
+          { type: "divider" },
           {
             key: "/user",
             icon: <UserOutlined />,
             label: "ผู้ใช้งาน",
           },
           { type: "divider" },
+          {
+            key: "setting",
+            icon: <SettingOutlined />,
+            label: "ตั้งค่า",
+          },
+           { type: "divider" },
           {
             key: "logout",
             icon: <LogoutOutlined />,

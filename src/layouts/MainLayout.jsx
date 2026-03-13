@@ -18,7 +18,7 @@ const MainLayout = () => {
         <Layout>
           <Sidebar />
           {/* ใส่ Outlet ตรงกลางสำหรับเป็นที่แสดงผลเนื้อหาของแต่ละหน้า (เช่น Dashboard) */}
-          <Content style={{ margin: "5px 5px", padding: 0, minHeight: 100 }}>
+          <Content style={{ margin: "10px 10px", padding: 5, minHeight: 100 }}>
             <Outlet />
           </Content>
         </Layout>

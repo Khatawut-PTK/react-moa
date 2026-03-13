@@ -1,149 +1,88 @@
-import React from 'react'
+import React from "react";
 
-import { 
-    Table, 
-    Button, 
-    Space, 
-    Popconfirm, 
-    Switch 
-} from 'antd'
-import { 
-    KeyOutlined, 
-    EditOutlined, 
-    DeleteOutlined 
-} from '@ant-design/icons'
+import { Table, Button, Space, Typography, Input, Flex } from "antd";
+import {
+  SearchOutlined,
+  PlusOutlined,
+  ImportOutlined,
+  ExportOutlined,
+} from "@ant-design/icons";
+import dataUser from "../mooc/dataUser";
+import columns from "../structs/userTableColumns";
 
-const data = [
-    {
-        id: 1,
-        firstName: 'John',
-        lastName: 'Doe',
-        position: 'Software Engineer',
-        status: 1,
-    },
-    {
-        id: 2,
-        firstName: 'Jane',
-        lastName: 'Doe',
-        position: 'Software Engineer',
-        status: 1,
-    },
-    {
-        id: 3,
-        firstName: 'Bob',
-        lastName: 'Doe',
-        position: 'Software Engineer',
-        status: 1,
-    },
-]
-
-const columns = [
-        {
-            title: 'ลำดับ',
-            dataIndex: 'id',
-            align: 'center',
-            key: 'id',
-            width: 70,
-        },
-        {
-            title: 'ชื่อ',
-            dataIndex: 'firstName',
-            key: 'firstName',
-            width: 200,
-        },
-        {
-            title: 'นามสกุล',
-            dataIndex: 'lastName',
-            key: 'lastName',
-            width: 200,
-        },
-        {
-            title: 'ตำแหน่ง',
-            dataIndex: 'position',
-            key: 'position',
-            width: 150,
-        },
-        {
-            title: 'สถานะ',
-            dataIndex: 'status',
-            align: 'center',
-            key: 'status',
-            width: 110,
-            render: (status, ) => {
-                const currentStatus = Number(status);
-                const isActive = currentStatus === 1;
-
-                return (
-                    <Switch
-                        checked={isActive}
-                        size='large'
-                        checkedChildren="ใช้งาน"
-                        unCheckedChildren="ระงับ"
-                        style={{ backgroundColor: isActive ? '#52c41a' : '#ff4d4f' }}
-                        onChange={() => {
-                            // const nextStatus = isActive ? 0 : 1;
-                            // onStatusChange(record.id, nextStatus);
-                        }}
-                    />
-                );
-            },
-        },
-        {
-            title: 'จัดการ',
-            key: 'action',
-            width: 100,
-            align: 'center',
-            render: () => (
-                <Space size="middle">
-                    <Button
-                        style={{ borderColor: '#807f7eff', color: '#807f7eff' }}
-                        size='small'
-                        icon={<KeyOutlined />}
-                        // onClick={() => onChangePassword(record)}
-                    >
-                    </Button>
-
-                    <Button
-                        style={{ borderColor: '#faad14', color: '#faad14' }}
-                        size='small'
-                        icon={<EditOutlined />}
-                        // onClick={() => onEdit(record)}
-                    >
-                        แก้ไข
-                    </Button>
-
-                    <Popconfirm
-                        title="ยืนยันการลบผู้ใช้งาน"
-                        description="คุณแน่ใจหรือไม่ที่จะลบข้อมูลนี้? การกระทำนี้ไม่สามารถย้อนกลับได้"
-                        // onConfirm={() => onDelete(record.id)}
-                        okText="ใช่, ลบเลย"
-                        cancelText="ยกเลิก"
-                        okButtonProps={{ danger: true }}
-                    >
-                        <Button
-                            danger
-                            size='small'
-                            icon={<DeleteOutlined />}
-                        >
-                            ลบ
-                        </Button>
-                    </Popconfirm>
-                </Space >
-            ),
-        },
-    ];
+const { Title } = Typography;
 
 const AppTable = () => {
   return (
-    <Table
-        // style={{ fontSize: '13px' }}
-        columns={columns} 
-        style={{ fontSize: '13px' }}
-        dataSource={data} 
-        pagination={5}
+    <>
+      <Title
+        level={4}
+        style={{
+          marginBottom: 16,
+          marginTop: 0,
+        }}
+      >
+        ตารางรายชื่อผู้ใช้งานทั้งหมด
+      </Title>
+      <Flex justify="space-between" align="center" style={{ marginBottom: 14 }}>
+        <Input
+          placeholder="ค้นหา"
+          suffix={<SearchOutlined />}
+          style={{
+            width: 300,
+            marginBottom: 0,
+          }}
+        />
+        <Space
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <Button
+            style={{
+              backgroundColor: "#158547ff",
+              color: "#ffffff",
+              margin: 5,
+            }}
+            size="small"
+            icon={<PlusOutlined />}
+          >
+            เพิ่มผู้ใช้งาน
+          </Button>
+          <Button
+            style={{
+              backgroundColor: "#5e84d7ff",
+              color: "#ffffff",
+            }}
+            size="small"
+            icon={<ImportOutlined />}
+          >
+            Import
+          </Button>
+          <Button
+            style={{
+              backgroundColor: "#5e84d7ff",
+              color: "#ffffff",
+            }}
+            size="small"
+            icon={<ExportOutlined />}
+          >
+            Export
+          </Button>
+        </Space>
+      </Flex>
+      <Table
+        columns={columns}
+        dataSource={dataUser}
+        pagination={{ pageSize: 10 }}
         bordered
-    />
-  )
-}
+        rowKey="id"
+        size="middle"
+        scroll={{ x: "max-content" }}
+      />
+    </>
+  );
+};
 
-export default AppTable
+export default AppTable;

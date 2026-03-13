@@ -8,6 +8,13 @@ createRoot(document.getElementById('root')).render(
       token: {
         colorBgLayout: 'transparent',
         fontFamily: 'Prompt, sans-serif',
+        fontSize: 13,
+      },
+      components: {
+        Table: {
+          headerBg: '#5e84d7ff',
+          headerColor: '#ffffff',
+        },
       },
     }}
   >
