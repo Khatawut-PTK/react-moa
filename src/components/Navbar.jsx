@@ -1,8 +1,5 @@
 import { useState, useEffect } from "react";
-import { 
-  Layout, 
-  Typography, 
-} from "antd";
+import { Layout, Typography } from "antd";
 import { Avatar } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import formatDateTime from "../utils/dateTime";
@@ -23,20 +20,20 @@ function Navbar() {
       <Header className="admin-header-container">
         <div className="admin-navbar-section">
           <Title level={5} className="admin-navbar-title">
-              {formatDateTime(currentTime)}
+            {formatDateTime(currentTime)}
             <Avatar
               size="middle"
-              style={{ 
-                backgroundColor: "#fff", 
-                color: "#002140", 
-                fontSize: "15px"
+              style={{
+                backgroundColor: "#fff",
+                color: "#002140",
+                fontSize: "15px",
               }}
               icon={<UserOutlined />}
             />
             ผู้ดูแลระบบ
           </Title>
           <Title level={5} className="admin-navbar-title-user">
-              ผู้ดูแลระบบขั้นสูง
+            ผู้ดูแลระบบขั้นสูง
           </Title>
         </div>
       </Header>
