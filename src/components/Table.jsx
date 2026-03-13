@@ -29,6 +29,9 @@ const AppTable = () => {
           placeholder="ค้นหา"
           suffix={<SearchOutlined />}
           style={{
+            boxShadow: "0 6px 16px rgba(0, 0, 0, 0.12)",
+            borderRadius: 10,
+            border: "none",
             width: 300,
             marginBottom: 0,
           }}
@@ -74,10 +77,12 @@ const AppTable = () => {
       </Flex>
       <Table
         columns={columns}
-        dataSource={dataUser}
+        dataSource={dataUser.map((user, index) => ({
+          ...user,
+          key: user.id || index,
+        }))}
         pagination={{ pageSize: 10 }}
         bordered
-        rowKey="id"
         size="middle"
         scroll={{ x: "max-content" }}
       />

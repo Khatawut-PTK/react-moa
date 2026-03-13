@@ -28,7 +28,7 @@ function AppMenu() {
           fontSize: "13px",
           display: "flex",
           flexDirection: "column",
-          height: "calc(100vh - 48px)",
+          height: "100%",
           borderRight: 0,
         }}
         items={[
