@@ -16,7 +16,7 @@ const AppTable = () => {
   return (
     <>
       <Title
-        level={4}
+        level={3}
         style={{
           marginBottom: 16,
           marginTop: 0,

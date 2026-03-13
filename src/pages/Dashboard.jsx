@@ -12,12 +12,13 @@ const Dashboard = () => {
 
   return (
     <>
-      <Title 
-        level={4} 
-        style={{ 
-          marginBottom: 8, 
-          marginTop: 5 
-        }}>
+      <Title
+        level={3}
+        style={{
+          marginBottom: 8,
+          marginTop: 5,
+        }}
+      >
         ภาพรวมผลการดำเนินงาน
       </Title>
       <Card>
@@ -31,7 +32,7 @@ const Dashboard = () => {
           {items.map((item, index) => (
             <Card
               key={index}
-            //   loading={loading}
+              //   loading={loading}
               style={{ backgroundColor: "#f0f2f5", textAlign: "center" }}
             >
               <Title level={5}>{item.title}</Title>

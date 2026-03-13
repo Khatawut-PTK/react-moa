@@ -28,7 +28,7 @@ function AppMenu() {
           fontSize: "13px",
           display: "flex",
           flexDirection: "column",
-          height: "calc(90vh - 48px)",
+          height: "calc(100vh - 48px)",
           borderRight: 0,
         }}
         items={[
@@ -39,7 +39,7 @@ function AppMenu() {
           },
           { type: "divider" },
           {
-            key: "project",
+            key: "/project",
             icon: <ProjectOutlined />,
             label: "โครงการ",
           },
@@ -51,11 +51,11 @@ function AppMenu() {
           },
           { type: "divider" },
           {
-            key: "setting",
+            key: "/setting",
             icon: <SettingOutlined />,
             label: "ตั้งค่า",
           },
-           { type: "divider" },
+          { type: "divider" },
           {
             key: "logout",
             icon: <LogoutOutlined />,
