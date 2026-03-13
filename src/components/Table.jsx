@@ -82,9 +82,14 @@ const AppTable = () => {
           key: user.id || index,
         }))}
         pagination={{ pageSize: 10 }}
-        bordered
+        // bordered
         size="middle"
         scroll={{ x: "max-content" }}
+        style={{
+          boxShadow: "0 6px 16px rgba(0, 0, 0, 0.12)",
+          borderRadius: 10,
+          border: "none",
+        }}
       />
     </>
   );

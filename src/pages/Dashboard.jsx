@@ -1,7 +1,8 @@
 import React from "react";
-import { Card, Typography, Flex } from "antd";
+import { Typography, Flex } from "antd";
 import dataItems from "../mooc/dataItems";
-import IconDashboard from "../components/IconDashboard";
+import CardDashboard from "../components/CardDashboard";
+import Charts from "../components/Charts";
 
 const { Title } = Typography;
 
@@ -26,40 +27,18 @@ const Dashboard = () => {
         }}
       >
         {dataItems.map((item, index) => (
-          <Card
-            key={index}
-            style={{
-              backgroundColor: "#ffffffff",
-              boxShadow: "0 6px 16px rgba(0, 0, 0, 0.12)", // ปรับเงาให้ชัดขึ้น
-              textAlign: "center",
-              color: "#545252ff",
-              borderRadius: 10,
-              border: "none", // เอาขอบการ์ดออกเพื่อให้เงาดูเด่นขึ้น
-            }}
-          >
-            <IconDashboard title={item.title} /> {/* แทรกไอคอนตรงนี้ */}
-            <Title
-              level={3}
-              style={{
-                margin: 0,
-                fontSize: 13,
-                color: "#545252ff",
-              }}
-            >
-              {item.title}
-            </Title>
-            <Title
-              level={4}
-              style={{
-                margin: 0,
-                fontSize: 13,
-                color: "#545252ff",
-              }}
-            >
-              {item.value}
-            </Title>
-          </Card>
+          <CardDashboard key={index} item={item} />
         ))}
+      </Flex>
+      <Flex
+        style={{
+          borderRadius: 20,
+          display: "grid",
+          gridTemplateColumns: "repeat(1, 1fr)",
+          marginTop: 20,
+        }}
+      >
+        <Charts />
       </Flex>
     </>
   );

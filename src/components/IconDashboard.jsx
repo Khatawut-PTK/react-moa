@@ -7,7 +7,7 @@ import {
 } from "@ant-design/icons";
 
 const IconDashboard = ({ title }) => {
-  const iconStyle = { fontSize: 32, marginBottom: 12, display: "block" };
+  const iconStyle = { fontSize: 32 };
 
   if (title.includes("ผู้ใช้งาน"))
     return <TeamOutlined style={{ ...iconStyle, color: "#1677ff" }} />;
