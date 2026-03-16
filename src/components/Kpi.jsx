@@ -1,6 +1,8 @@
 import React from "react";
 import { Pie } from "@ant-design/plots";
-import { Flex, Card } from "antd";
+import { Flex, Card, Typography } from "antd";
+
+const { Title } = Typography;
 
 const Kpi = () => {
   // const data = [
@@ -49,16 +51,26 @@ const Kpi = () => {
       style={{
         backgroundColor: "#ffffffff",
         boxShadow: "0 6px 16px rgba(0, 0, 0, 0.12)",
-        textAlign: "center",
+        // textAlign: "center",
         color: "#545252ff",
         borderRadius: 10,
         border: "none",
         width: "100%",
         height: "100%",
-        padding: "24px",
+        padding: "5px",
       }}
     >
-      <Flex style={{ flex: 1, minHeight: 0 }}>{/* <Pie {...config} /> */}</Flex>
+      <Title
+        level={5}
+        style={{
+          marginTop: 0,
+        }}
+      >
+        สถานะ KPI ทั้งหมด
+      </Title>
+      <Flex style={{ flex: 1, minHeight: 0 }}>
+        <Pie />
+      </Flex>
     </Card>
   );
 };

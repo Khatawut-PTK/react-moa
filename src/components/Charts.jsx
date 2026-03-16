@@ -1,7 +1,9 @@
 import React from "react";
-import { Flex } from "antd";
+import { Flex, Typography } from "antd";
 import { Line } from "@ant-design/plots";
 // import dataCharts from "../mooc/dataCharts";
+
+const { Title } = Typography;
 
 const Graph = () => {
   return (
@@ -16,6 +18,14 @@ const Graph = () => {
         padding: "24px",
       }}
     >
+      <Title
+        level={5}
+        style={{
+          marginTop: 0,
+        }}
+      >
+        ภาพรวมผลการดำเนินงาน
+      </Title>
       <Flex style={{ flex: 1, minHeight: 0 }}>
         {/* <Line
           data={dataCharts}
