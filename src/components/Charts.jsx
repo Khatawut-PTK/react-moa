@@ -13,8 +13,8 @@ const Graph = () => {
           textAlign: "center",
           color: "#545252ff",
           borderRadius: 10,
-          display: "grid",
-          gridTemplateColumns: "repeat(2, 1fr)",
+          display: "flex",
+          // gridTemplateColumns: "repeat(2, 1fr)",
           border: "none",
           gap: 20,
         }}

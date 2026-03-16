@@ -3,6 +3,7 @@ import { Typography, Flex } from "antd";
 import dataItems from "../mooc/dataItems";
 import CardDashboard from "../components/CardDashboard";
 import Charts from "../components/Charts";
+import Kpi from "../components/Kpi";
 
 const { Title } = Typography;
 
@@ -38,7 +39,16 @@ const Dashboard = () => {
           marginTop: 20,
         }}
       >
-        <Charts />
+        <Flex
+          style={{
+            borderRadius: 20,
+            display: "flex",
+            marginTop: 20,
+          }}
+        >
+          <Charts />
+          <Kpi />
+        </Flex>
       </Flex>
     </>
   );

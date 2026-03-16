@@ -1,7 +1,8 @@
 import React from "react";
+import { Gauge } from "@ant-design/plots";
 
 const Kpi = () => {
-  return <div>Kpi</div>;
+  return <Gauge />;
 };
 
 export default Kpi;
