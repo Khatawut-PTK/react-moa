@@ -1,7 +1,7 @@
 import React from "react";
 import { Flex } from "antd";
 import { Line } from "@ant-design/plots";
-import dataCharts from "../mooc/dataCharts";
+// import dataCharts from "../mooc/dataCharts";
 
 const Graph = () => {
   return (
@@ -17,13 +17,13 @@ const Graph = () => {
       }}
     >
       <Flex style={{ flex: 1, minHeight: 0 }}>
-        <Line
+        {/* <Line
           data={dataCharts}
           xField="year"
           yField="value"
           point={{ size: 5 }}
           smooth
-        />
+        /> */}
       </Flex>
     </Flex>
   );
