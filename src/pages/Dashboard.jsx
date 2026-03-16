@@ -35,6 +35,8 @@ const Dashboard = () => {
         style={{
           marginTop: 20,
           gap: 20,
+          height: 420,
+          alignItems: "stretch",
         }}
       >
         <Flex style={{ flex: 2, minWidth: 0 }}>

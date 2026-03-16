@@ -25,7 +25,7 @@ const CardDashboard = ({ item }) => {
             style={{
               margin: 0,
               fontSize: 13,
-              fontWeight: 500,
+              fontWeight: 400,
               color: "#9f9f9fff",
             }}
           >
@@ -47,7 +47,7 @@ const CardDashboard = ({ item }) => {
               style={{
                 margin: 0,
                 fontSize: 10,
-                fontWeight: 500,
+                fontWeight: 400,
                 color: "#9f9f9fff",
               }}
             >

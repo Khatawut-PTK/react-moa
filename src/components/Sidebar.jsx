@@ -9,7 +9,7 @@ function Sidebar() {
     <>
       <Sider
         collapsible
-        width={150}
+        width={160}
         style={{
           background: "#fff",
           borderRight: "1px solid #f0f0f0",

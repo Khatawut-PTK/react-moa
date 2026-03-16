@@ -14,7 +14,7 @@ const Graph = () => {
         boxShadow: "0 6px 16px rgba(0, 0, 0, 0.12)",
         borderRadius: 10,
         width: "100%",
-        height: "auto",
+        // height: "auto",
         padding: "24px",
       }}
     >
