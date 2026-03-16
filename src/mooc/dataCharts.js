@@ -1,4 +1,4 @@
-const data = [
+const dataCharts = [
     { year: "1991", value: 3 },
     { year: "1992", value: 4 },
     { year: "1993", value: 3.5 },
@@ -11,4 +11,4 @@ const data = [
     { year: "2000", value: 10 },
 ];
 
-export default data;
+export default dataCharts;

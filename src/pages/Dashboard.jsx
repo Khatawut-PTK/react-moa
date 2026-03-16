@@ -33,20 +33,14 @@ const Dashboard = () => {
       </Flex>
       <Flex
         style={{
-          borderRadius: 20,
-          display: "grid",
-          gridTemplateColumns: "repeat(1, 1fr)",
           marginTop: 20,
+          gap: 20,
         }}
       >
-        <Flex
-          style={{
-            borderRadius: 20,
-            display: "flex",
-            marginTop: 20,
-          }}
-        >
+        <Flex style={{ flex: 2, minWidth: 0 }}>
           <Charts />
+        </Flex>
+        <Flex style={{ flex: 1, minWidth: 0 }}>
           <Kpi />
         </Flex>
       </Flex>

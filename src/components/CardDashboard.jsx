@@ -16,31 +16,34 @@ const CardDashboard = ({ item }) => {
         border: "none",
       }}
     >
-      <Flex
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          marginBottom: 12,
-        }}
-      >
-        <IconDashboard title={item.title} />
-        <Title
-          level={3}
+      <Flex vertical>
+        <Flex
           style={{
-            margin: 0,
-            fontSize: 13,
-            color: "#545252ff",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: 10,
+            marginBottom: 5,
           }}
         >
-          {item.title}
-        </Title>
+          <IconDashboard title={item.title} />
+          <Title
+            level={3}
+            style={{
+              fontSize: 13,
+              color: "#9f9f9fff",
+              fontWeight: "normal",
+            }}
+          >
+            {item.title}
+          </Title>
+        </Flex>
         <Title
           level={4}
           style={{
             margin: 0,
-            fontSize: 13,
+            fontSize: 15,
             color: "#545252ff",
+            textAlign: "center",
           }}
         >
           {item.value}
