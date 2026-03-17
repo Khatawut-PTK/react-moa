@@ -60,7 +60,7 @@ function AppMenu() {
             key: "logout",
             icon: <LogoutOutlined />,
             label: "ออกจากระบบ",
-            style: { marginTop: "auto", marginBottom: "16px" },
+            // style: { marginTop: "auto", marginBottom: "16px" },
           },
         ]}
       />
