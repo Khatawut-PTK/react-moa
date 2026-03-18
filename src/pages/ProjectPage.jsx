@@ -1,5 +1,5 @@
 import React from "react";
-import AppTable from "../components/Table";
+import BaseTable from "../components/BaseTable";
 import { Tag } from "antd";
 
 const Project = () => {
@@ -65,7 +65,7 @@ const Project = () => {
 
   return (
     <>
-      <AppTable
+      {/* <AppTable
         title="โครงการที่ดำเนินการทั้งหมด"
         columns={projectColumns}
         dataSource={projectData}
@@ -74,7 +74,8 @@ const Project = () => {
         showImportButton={false}
         showExportButton={false}
         onAdd={() => console.log("Add")}
-      />
+      /> */}
+      <BaseTable columns={projectColumns} dataSource={projectData} />
     </>
   );
 };

@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Login from "./pages/Login";
-import Dashboard from "./pages/Dashboard";
-import User from "./pages/User";
+import Login from "./pages/LoginPage";
 import MainLayout from "./layouts/MainLayout";
-import Project from "./pages/Project";
-import Setting from "./pages/Setting";
+import UserPage from "./pages/UserPage";
+import Dashboard from "./pages/DashboardPage";
+import Project from "./pages/ProjectPage";
+import Setting from "./pages/SettingPage";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
         {/* หน้าที่ต้องการ Navbar / Sidebar ให้วางไว้ข้างใน Route ของ MainLayout */}
         <Route element={<MainLayout />}>
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/user" element={<User />} />
+          <Route path="/user" element={<UserPage />} />
           <Route path="/project" element={<Project />} />
           <Route path="/setting" element={<Setting />} />
         </Route>

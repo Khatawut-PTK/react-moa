@@ -9,7 +9,7 @@ import {
   ProjectOutlined,
 } from "@ant-design/icons";
 
-function AppMenu() {
+const AppMenu = () => {
   const navigate = useNavigate();
 
   return (
@@ -66,6 +66,6 @@ function AppMenu() {
       />
     </>
   );
-}
+};
 
 export default AppMenu;

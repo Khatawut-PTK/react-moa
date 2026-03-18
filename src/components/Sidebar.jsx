@@ -4,7 +4,7 @@ import AppMenu from "./Menu";
 
 const { Sider } = Layout;
 
-function Sidebar() {
+const Sidebar = () => {
   return (
     <>
       <Sider
@@ -19,6 +19,6 @@ function Sidebar() {
       </Sider>
     </>
   );
-}
+};
 
 export default Sidebar;

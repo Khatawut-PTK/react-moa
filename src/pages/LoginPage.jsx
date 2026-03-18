@@ -1,3 +1,4 @@
+// src/pages/LoginPage.jsx
 import {
   Button,
   Checkbox,
@@ -13,16 +14,27 @@ import "../assets/login.css";
 import { showSuccess, showError } from "../utils/sweetalert";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../features/auth/auth.hook";
+import useAuthStore from "../stores/auth.store";
 
 const { Text, Title } = Typography;
 
 const Login = () => {
   const navigate = useNavigate();
+  const setAuth = useAuthStore((state) => state.setAuth);
+  const { login, loading } = useAuth();
 
-  const onFinish = (values) => {
-    console.log("Success:", values);
-    showSuccess("เข้าสู่ระบบสำเร็จ");
-    navigate("/dashboard");
+  const onFinish = async (values) => {
+    try {
+      const response = await login(values.userName, values.password);
+      setAuth(response.data);
+      showSuccess("เข้าสู่ระบบสำเร็จ");
+      navigate("/dashboard");
+    } catch (error) {
+      showError(
+        error.response?.data?.message || "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง",
+      );
+    }
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -63,7 +75,7 @@ const Login = () => {
                 requiredMark={false}
               >
                 <Form.Item
-                  name="username"
+                  name="userName"
                   rules={[{ required: true, message: "กรุณากรอกชื่อผู้ใช้" }]}
                   className="login-form-item"
                   style={{ marginBottom: "25px" }}
@@ -100,7 +112,12 @@ const Login = () => {
                 </Form.Item>
 
                 <Form.Item style={{ marginBottom: 0 }}>
-                  <Button type="primary" htmlType="submit" block>
+                  <Button
+                    type="primary"
+                    htmlType="submit"
+                    loading={loading}
+                    block
+                  >
                     เข้าสู่ระบบ
                   </Button>
                 </Form.Item>
