@@ -47,6 +47,7 @@ const useAuth = () => {
         try {
             await authApi.logout();
             localStorage.removeItem("token");
+            localStorage.removeItem("auth-storage");
             setUser(null);
             setError(null);
         } catch (err) {

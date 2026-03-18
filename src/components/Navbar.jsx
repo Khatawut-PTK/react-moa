@@ -1,4 +1,3 @@
-// src/components/Navbar.jsx
 import { useState, useEffect } from "react";
 import { Layout, Typography, Flex, Space } from "antd";
 import { Avatar } from "antd";

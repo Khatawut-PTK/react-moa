@@ -8,9 +8,11 @@ import {
   SettingOutlined,
   ProjectOutlined,
 } from "@ant-design/icons";
+import useAuth from "../features/auth/auth.hook";
 
 const AppMenu = () => {
   const navigate = useNavigate();
+  const { logout } = useAuth();
 
   return (
     <>
@@ -18,6 +20,7 @@ const AppMenu = () => {
         onClick={(item) => {
           if (item.key === "logout") {
             navigate("/");
+            logout();
           } else {
             navigate(item.key);
           }
