@@ -1,13 +1,13 @@
 // src/components/Navbar.jsx
 import { useState, useEffect } from "react";
-import { Layout, Typography } from "antd";
+import { Layout, Typography, Flex, Space } from "antd";
 import { Avatar } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import useAuthStore from "../stores/auth.store";
 import formatDateTime from "../utils/dateTime";
 
 const { Header } = Layout;
-const { Title } = Typography;
+const { Text } = Typography;
 
 const Navbar = () => {
   const user = useAuthStore((state) => state.user);
@@ -21,9 +21,17 @@ const Navbar = () => {
   return (
     <>
       <Header className="admin-header-container">
-        <div className="admin-navbar-section">
-          <Title level={5} className="admin-navbar-title">
-            {formatDateTime(currentTime)}
+        <Flex
+          vertical
+          align="flex-end"
+          justify="center"
+          style={{ width: "100%" }}
+        >
+          <Space align="center">
+            <Text className="admin-navbar-title">
+              {formatDateTime(currentTime)}
+            </Text>
+
             <Avatar
               size="middle"
               style={{
@@ -33,12 +41,19 @@ const Navbar = () => {
               }}
               icon={<UserOutlined />}
             />
-            {user?.userName || ""}
-          </Title>
-          <Title level={5} className="admin-navbar-title-user">
-            {user?.position || ""}
-          </Title>
-        </div>
+
+            <Flex vertical align="flex-start" style={{ lineHeight: 1.2 }}>
+              <Text style={{ color: "#cecbcb", fontSize: 12 }}>
+                {user?.fullName || ""}
+              </Text>
+              <Text
+                style={{ color: "#9a9898", fontSize: 10, marginTop: "-4px" }}
+              >
+                {user?.position || ""}
+              </Text>
+            </Flex>
+          </Space>
+        </Flex>
       </Header>
     </>
   );

@@ -21,7 +21,6 @@ body {
 
 /******************************************************/
 
-/* Navbar Styles */
 .admin-header-container {
     background: #002140 !important; 
     padding: 8px 24px !important;
@@ -62,4 +61,17 @@ body {
 .admin-navbar-title.ant-typography .ant-avatar {
     margin-right: 8px !important;
     margin-left: 10px !important;
+}
+
+.admin-navbar-title {
+    color: #cecbcb !important;
+    font-size: 14px !important;
+    display: flex;
+    align-items: center;
+}
+
+.admin-navbar-title-user {
+    color: #9a9898 !important;
+    font-size: 10px !important;
+    margin-top: -4px;
 }
