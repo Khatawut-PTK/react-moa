@@ -9,10 +9,54 @@ import {
   ProjectOutlined,
 } from "@ant-design/icons";
 import useAuth from "../features/auth/auth.hook";
+import useAuthStore from "../stores/auth.store";
 
 const AppMenu = () => {
   const navigate = useNavigate();
   const { logout } = useAuth();
+  const { user } = useAuthStore();
+
+  const isAdmin = user?.role === "admin";
+
+  const menuItems = [
+    ...(isAdmin
+      ? [
+          {
+            key: "/dashboard",
+            icon: <DashboardOutlined />,
+            label: "แดชบอร์ด",
+          },
+          { type: "divider" },
+        ]
+      : []),
+    {
+      key: "/project",
+      icon: <ProjectOutlined />,
+      label: "โครงการ",
+    },
+    { type: "divider" },
+    ...(isAdmin
+      ? [
+          {
+            key: "/user",
+            icon: <UserOutlined />,
+            label: "ผู้ใช้งาน",
+          },
+          { type: "divider" },
+          {
+            key: "/setting",
+            icon: <SettingOutlined />,
+            label: "ตั้งค่า",
+          },
+          { type: "divider" },
+        ]
+      : []),
+    {
+      key: "logout",
+      icon: <LogoutOutlined />,
+      label: "ออกจากระบบ",
+    },
+  ];
 
   return (
     <>
@@ -34,38 +78,7 @@ const AppMenu = () => {
           height: "100%",
           borderRight: 0,
         }}
-        items={[
-          {
-            key: "/dashboard",
-            icon: <DashboardOutlined />,
-            label: "แดชบอร์ด",
-          },
-          { type: "divider" },
-          {
-            key: "/project",
-            icon: <ProjectOutlined />,
-            label: "โครงการ",
-          },
-          { type: "divider" },
-          {
-            key: "/user",
-            icon: <UserOutlined />,
-            label: "ผู้ใช้งาน",
-          },
-          { type: "divider" },
-          {
-            key: "/setting",
-            icon: <SettingOutlined />,
-            label: "ตั้งค่า",
-          },
-          { type: "divider" },
-          {
-            key: "logout",
-            icon: <LogoutOutlined />,
-            label: "ออกจากระบบ",
-            // style: { marginTop: "auto", marginBottom: "16px" },
-          },
-        ]}
+        items={menuItems}
       />
     </>
   );

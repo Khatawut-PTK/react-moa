@@ -3,7 +3,6 @@ import { Typography, Flex } from "antd";
 import dataItems from "../mooc/dataItems";
 import CardDashboard from "../components/CardDashboard";
 import Charts from "../components/Charts";
-import Kpi from "../components/Kpi";
 
 const { Title } = Typography;
 

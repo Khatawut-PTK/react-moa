@@ -1,6 +1,13 @@
 import AppTable from "../components/Table";
+// import { useState, useEffect } from "react";
+// import userApi from "../features/user/user.api";
 
-export default function UserPage() {
+const UserPage = () => {
+  // const [users, setUsers] = useState([]);
+  // useEffect(() => {
+  //   userApi.getAll().then((res) => setUsers(res.data));
+  // }, []);
+
   return (
     <AppTable
       title="ตารางรายชื่อผู้ใช้งานทั้งหมด"
@@ -10,22 +17,11 @@ export default function UserPage() {
         { title: "ตำแหน่ง", dataIndex: "position" },
         { title: "สถานะ", dataIndex: "status" },
       ]}
-      dataSource={[
-        {
-          username: "user1",
-          fullName: "John Doe",
-          position: "Manager",
-          status: "Active",
-        },
-        {
-          username: "user2",
-          fullName: "Jane Smith",
-          position: "Developer",
-          status: "Inactive",
-        },
-      ]}
+      // dataSource={users}
       onSearch={(e) => console.log(e.target.value)}
       onAdd={() => console.log("add")}
     />
   );
-}
+};
+
+export default UserPage;
