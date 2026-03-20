@@ -38,9 +38,7 @@ const Dashboard = () => {
           alignItems: "stretch",
         }}
       >
-        <Flex style={{ flex: 2, minWidth: 0 }}>
-          <Charts />
-        </Flex>
+        <Flex style={{ flex: 2, minWidth: 0 }}>{/* <Charts /> */}</Flex>
         {/* <Flex style={{ flex: 1, minWidth: 0 }}>
           <Kpi />
         </Flex> */}

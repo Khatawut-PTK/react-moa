@@ -1,41 +1,7 @@
 import React from "react";
-import BaseTable from "../components/BaseTable";
-import { Tag } from "antd";
+import AppTable from "../components/Table";
 
 const Project = () => {
-  const projectColumns = [
-    {
-      title: "ชื่อโครงการ",
-      dataIndex: "name",
-      key: "name",
-    },
-    {
-      title: "สถานะ",
-      dataIndex: "status",
-      key: "status",
-      render: (text) => {
-        return (
-          <Tag
-            color={
-              text === "เสร็จสิ้น"
-                ? "green"
-                : text === "กำลังดำเนินการ"
-                  ? "blue"
-                  : "red"
-            }
-          >
-            {text}
-          </Tag>
-        );
-      },
-    },
-    {
-      title: "ผู้รับผิดชอบ",
-      dataIndex: "owner",
-      key: "owner",
-    },
-  ];
-
   const projectData = [
     {
       id: 1,
@@ -64,19 +30,19 @@ const Project = () => {
   ];
 
   return (
-    <>
-      {/* <AppTable
-        title="โครงการที่ดำเนินการทั้งหมด"
-        columns={projectColumns}
-        dataSource={projectData}
-        addButtonLabel="เพิ่มโครงการ"
-        showAddButton={false}
-        showImportButton={false}
-        showExportButton={false}
-        onAdd={() => console.log("Add")}
-      /> */}
-      <BaseTable columns={projectColumns} dataSource={projectData} />
-    </>
+    <AppTable
+      title="โครงการที่กำลังดำเนินการ"
+      columns={[
+        { title: "ชื่อโครงการ", dataIndex: "name" },
+        { title: "สถานะ", dataIndex: "status" },
+        { title: "ผู้รับผิดชอบ", dataIndex: "owner" },
+      ]}
+      dataSource={projectData}
+      addButtonLabel="เพิ่มโครงการ"
+      onAdd={() => {}}
+      onImport={false}
+      onExport={false}
+    />
   );
 };
 

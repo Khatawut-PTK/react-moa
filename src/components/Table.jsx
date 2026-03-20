@@ -16,6 +16,7 @@ const AppTable = ({
   onAdd,
   onImport,
   onExport,
+  addButtonLabel = "เพิ่มผู้ใช้งาน",
   ...props
 }) => {
   return (
@@ -38,15 +39,30 @@ const AppTable = ({
           placeholder="ค้นหา"
         />
         <Space>
-          <Button onClick={onAdd} icon={<PlusOutlined />}>
-            เพิ่มผู้ใช้งาน
-          </Button>
-          <Button onClick={onImport} icon={<ImportOutlined />}>
-            นำเข้าข้อมูล
-          </Button>
-          <Button onClick={onExport} icon={<ExportOutlined />}>
-            ส่งออกข้อมูล
-          </Button>
+          {onAdd !== false && (
+            <Button
+              onClick={typeof onAdd === "function" ? onAdd : undefined}
+              icon={<PlusOutlined />}
+            >
+              {addButtonLabel}
+            </Button>
+          )}
+          {onImport !== false && (
+            <Button
+              onClick={typeof onImport === "function" ? onImport : undefined}
+              icon={<ImportOutlined />}
+            >
+              นำเข้าข้อมูล
+            </Button>
+          )}
+          {onExport !== false && (
+            <Button
+              onClick={typeof onExport === "function" ? onExport : undefined}
+              icon={<ExportOutlined />}
+            >
+              ส่งออกข้อมูล
+            </Button>
+          )}
         </Space>
       </Flex>
 
