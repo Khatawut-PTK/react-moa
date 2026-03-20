@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
-import AppTable from "../components/Table";
 import userApi from "../features/user/user.api";
 import { Switch, Popconfirm, Space } from "antd";
 import { KeyOutlined } from "@ant-design/icons";
+import AppTable from "../components/Table";
 import BaseButton from "../components/BaseButton";
 import ModalResetPassword from "../components/Modal";
+import { showSuccess } from "../utils/sweetalert";
 
 const UserPage = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [loadingId, setLoadingId] = useState(null);
 
-  const fetchUser = async () => {
+  const fetchUsers = async () => {
     setLoading(true);
     try {
       const res = await userApi.getAll();
@@ -25,7 +26,7 @@ const UserPage = () => {
   };
 
   useEffect(() => {
-    fetchUser();
+    fetchUsers();
   }, []);
 
   const handleStatusChange = async (id, checked) => {
@@ -51,14 +52,19 @@ const UserPage = () => {
     setOpenModal(id);
   };
 
-  const handleResetPassword = async () => {
+  const handleResetPassword = async (password) => {
+    const targetId = openModal;
+    setOpenModal(null);
+
     try {
-      await userApi.resetPassword(openModal);
-      await fetchUser();
+      await userApi.resetPassword(targetId, password);
+      await fetchUsers();
+
+      setTimeout(() => {
+        showSuccess("เปลี่ยนรหัสผ่านสำเร็จ");
+      }, 300);
     } catch (err) {
       console.error(err);
-    } finally {
-      setOpenModal(null);
     }
   };
 
@@ -67,67 +73,68 @@ const UserPage = () => {
   };
 
   return (
-    <AppTable
-      title="ตารางรายชื่อผู้ใช้งานทั้งหมด"
-      columns={[
-        { title: "Username", dataIndex: "userName" },
-        { title: "ชื่อ-นามสกุล", dataIndex: "fullName" },
-        { title: "ตำแหน่ง", dataIndex: "position" },
-        {
-          title: "สถานะ",
-          align: "center",
-          width: 150,
-          render: (_, record) => (
-            <Popconfirm
-              title="ยืนยันการเปลี่ยนสถานะ?"
-              description="คุณต้องการเปลี่ยนสถานะผู้ใช้งานนี้ใช่หรือไม่?"
-              onConfirm={() => handleStatusChange(record.id, !record.status)}
-              okText="ยืนยัน"
-              cancelText="ยกเลิก"
-            >
-              <Switch
-                size="medium"
-                loading={loadingId === record.id}
-                disabled={loadingId === record.id}
-                checked={record.status === 1}
-                checkedChildren="ใช้งาน"
-                unCheckedChildren="ระงับ"
-              />
-            </Popconfirm>
-          ),
-        },
-        {
-          title: "จัดการ",
-          align: "center",
-          width: 200,
-
-          render: (_, record) => (
-            <Space>
-              <ModalResetPassword
-                title="เปลี่ยนรหัสผ่าน"
-                open={openModal === record.id}
-                onOk={handleResetPassword}
-                onCancel={handleCancel}
+    <>
+      <AppTable
+        title="ตารางรายชื่อผู้ใช้งานทั้งหมด"
+        columns={[
+          { title: "Username", dataIndex: "userName" },
+          { title: "ชื่อ-นามสกุล", dataIndex: "fullName" },
+          { title: "ตำแหน่ง", dataIndex: "position" },
+          {
+            title: "สถานะ",
+            align: "center",
+            width: 150,
+            render: (_, record) => (
+              <Popconfirm
+                title="ยืนยันการเปลี่ยนสถานะ?"
+                description="คุณต้องการเปลี่ยนสถานะผู้ใช้งานนี้ใช่หรือไม่?"
+                onConfirm={() => handleStatusChange(record.id, !record.status)}
                 okText="ยืนยัน"
                 cancelText="ยกเลิก"
-              />
-              <BaseButton
-                variant="resetPassword"
-                size="small"
-                icon={<KeyOutlined />}
-                onClick={() => showModal(record.id)}
               >
-                เปลี่ยนรหัสผ่าน
-              </BaseButton>
-            </Space>
-          ),
-        },
-      ]}
-      dataSource={data}
-      loading={loading}
-      onSearch={(e) => console.log(e.target.value)}
-      onAdd={() => console.log("add")}
-    />
+                <Switch
+                  loading={loadingId === record.id}
+                  disabled={loadingId === record.id}
+                  checked={record.status === 1}
+                  checkedChildren="ใช้งาน"
+                  unCheckedChildren="ระงับ"
+                />
+              </Popconfirm>
+            ),
+          },
+          {
+            title: "จัดการ",
+            align: "center",
+            width: 200,
+
+            render: (_, record) => (
+              <Space>
+                <BaseButton
+                  variant="resetPassword"
+                  size="small"
+                  icon={<KeyOutlined />}
+                  onClick={() => showModal(record.id)}
+                >
+                  เปลี่ยนรหัสผ่าน
+                </BaseButton>
+              </Space>
+            ),
+          },
+        ]}
+        dataSource={data}
+        loading={loading}
+        onSearch={(e) => console.log(e.target.value)}
+        onAdd={() => console.log("add")}
+      />
+      <ModalResetPassword
+        title="เปลี่ยนรหัสผ่าน"
+        open={!!openModal}
+        onOk={handleResetPassword}
+        onCancel={handleCancel}
+        okText="ยืนยัน"
+        cancelText="ยกเลิก"
+      />
+    </>
   );
 };
 
