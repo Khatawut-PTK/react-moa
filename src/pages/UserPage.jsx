@@ -12,6 +12,7 @@ const UserPage = () => {
     setLoading(true);
     try {
       const res = await userApi.getAll();
+      await new Promise((resolve) => setTimeout(resolve, 500)); // TODO: เอาออกเมื่อใช้งานจริง (ใส่ไว้เพื่อดู loading)
       setData(res.data.data);
     } catch (err) {
       console.error(err);
