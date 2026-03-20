@@ -4,6 +4,7 @@ import userApi from "../features/user/user.api";
 import { Switch, Popconfirm, Space } from "antd";
 import { KeyOutlined } from "@ant-design/icons";
 import BaseButton from "../components/BaseButton";
+import ModalResetPassword from "../components/Modal";
 
 const UserPage = () => {
   const [data, setData] = useState([]);
@@ -44,6 +45,27 @@ const UserPage = () => {
     }
   };
 
+  const [openModal, setOpenModal] = useState(null);
+
+  const showModal = (id) => {
+    setOpenModal(id);
+  };
+
+  const handleResetPassword = async () => {
+    try {
+      await userApi.resetPassword(openModal);
+      await fetchUser();
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setOpenModal(null);
+    }
+  };
+
+  const handleCancel = () => {
+    setOpenModal(null);
+  };
+
   return (
     <AppTable
       title="ตารางรายชื่อผู้ใช้งานทั้งหมด"
@@ -79,14 +101,23 @@ const UserPage = () => {
           align: "center",
           width: 200,
 
-          render: () => (
+          render: (_, record) => (
             <Space>
+              <ModalResetPassword
+                title="เปลี่ยนรหัสผ่าน"
+                open={openModal === record.id}
+                onOk={handleResetPassword}
+                onCancel={handleCancel}
+                okText="ยืนยัน"
+                cancelText="ยกเลิก"
+              />
               <BaseButton
                 variant="resetPassword"
                 size="small"
                 icon={<KeyOutlined />}
+                onClick={() => showModal(record.id)}
               >
-                รีเซ็ตรหัสผ่าน
+                เปลี่ยนรหัสผ่าน
               </BaseButton>
             </Space>
           ),

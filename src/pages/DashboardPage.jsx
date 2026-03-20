@@ -1,11 +1,29 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import { Typography, Flex, Row, Col } from "antd";
+import { useNavigate } from "react-router-dom";
 import dataItems from "../mooc/dataItems";
 import CardDashboard from "../components/CardDashboard";
+import useAuthStore from "../stores/auth.store";
 
 const { Title } = Typography;
 
 const Dashboard = () => {
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const { user } = useAuthStore();
+
+  useEffect(() => {
+    if (user && user.role !== "admin") {
+      navigate("/project", { replace: true });
+    }
+  }, [user, navigate]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(true);
+    }, 5000);
+  }, []);
+
   return (
     <>
       <Title
@@ -20,7 +38,7 @@ const Dashboard = () => {
       <Row gutter={[20, 20]} style={{ borderRadius: 20 }}>
         {dataItems.map((item, index) => (
           <Col xs={24} sm={12} lg={6} key={index}>
-            <CardDashboard item={item} />
+            <CardDashboard item={item} loading={loading} />
           </Col>
         ))}
       </Row>
@@ -31,14 +49,7 @@ const Dashboard = () => {
           height: 420,
           alignItems: "stretch",
         }}
-      >
-        {/* <Flex style={{ flex: 2, minWidth: 0 }}>
-          <Charts />
-        </Flex> */}
-        {/* <Flex style={{ flex: 1, minWidth: 0 }}>
-          <Kpi />
-        </Flex> */}
-      </Flex>
+      ></Flex>
     </>
   );
 };

@@ -41,7 +41,12 @@ const AppTable = ({
         />
         <Space>
           {onAdd !== false && (
-            <BaseButton variant="add" onClick={onAdd} icon={<PlusOutlined />}>
+            <BaseButton
+              variant="add"
+              size="small"
+              onClick={onAdd}
+              icon={<PlusOutlined />}
+            >
               {addButtonLabel || "เพิ่มข้อมูล"}
             </BaseButton>
           )}
@@ -52,13 +57,17 @@ const AppTable = ({
               showUploadList={false}
               beforeUpload={onImport}
             >
-              <BaseButton variant="import" icon={<ImportOutlined />}>
+              <BaseButton
+                variant="import"
+                size="small"
+                icon={<ImportOutlined />}
+              >
                 {addButtonLabel || "นำเข้าข้อมูล"}
               </BaseButton>
             </Upload>
           )}
           {onExport !== false && (
-            <BaseButton variant="export" icon={<ExportOutlined />}>
+            <BaseButton variant="export" size="small" icon={<ExportOutlined />}>
               {addButtonLabel || "ส่งออกข้อมูล"}
             </BaseButton>
           )}

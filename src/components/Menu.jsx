@@ -107,7 +107,7 @@ const AppMenu = () => {
         mode="inline"
         defaultSelectedKeys={["/dashboard"]}
         style={{
-          fontSize: "13px",
+          fontSize: "12px",
           display: "flex",
           flexDirection: "column",
           height: "100%",

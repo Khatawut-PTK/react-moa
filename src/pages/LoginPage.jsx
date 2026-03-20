@@ -28,7 +28,11 @@ const Login = () => {
       const response = await login(values.userName, values.password);
       setAuth(response.data);
       showSuccess("เข้าสู่ระบบสำเร็จ");
-      navigate("/dashboard");
+      if (response.data.user?.role === "admin") {
+        navigate("/dashboard");
+      } else {
+        navigate("/project");
+      }
     } catch (error) {
       showError(
         error.response?.data?.message || "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง",
