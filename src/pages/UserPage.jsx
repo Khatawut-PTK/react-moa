@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import AppTable from "../components/Table";
 import userApi from "../features/user/user.api";
-import { Switch, Modal } from "antd";
+import { Switch, Popconfirm } from "antd";
 
 const UserPage = () => {
   const [data, setData] = useState([]);
@@ -42,13 +42,6 @@ const UserPage = () => {
     }
   };
 
-  const confirmStatusChange = (id, checked) => {
-    Modal.confirm({
-      title: "ยืนยันการเปลี่ยนสถานะ?",
-      onOk: () => handleStatusChange(id, checked),
-    });
-  };
-
   return (
     <AppTable
       title="ตารางรายชื่อผู้ใช้งานทั้งหมด"
@@ -60,15 +53,22 @@ const UserPage = () => {
           title: "สถานะ",
           align: "center",
           render: (_, record) => (
-            <Switch
-              size="medium"
-              loading={loadingId === record.id}
-              disabled={loadingId === record.id}
-              checked={record.status === 1}
-              checkedChildren="ใช้งาน"
-              unCheckedChildren="ระงับ"
-              onChange={(checked) => confirmStatusChange(record.id, checked)}
-            />
+            <Popconfirm
+              title="ยืนยันการเปลี่ยนสถานะ?"
+              description="คุณต้องการเปลี่ยนสถานะผู้ใช้งานนี้ใช่หรือไม่?"
+              onConfirm={() => handleStatusChange(record.id, !record.status)}
+              okText="ยืนยัน"
+              cancelText="ยกเลิก"
+            >
+              <Switch
+                size="medium"
+                loading={loadingId === record.id}
+                disabled={loadingId === record.id}
+                checked={record.status === 1}
+                checkedChildren="ใช้งาน"
+                unCheckedChildren="ระงับ"
+              />
+            </Popconfirm>
           ),
         },
       ]}

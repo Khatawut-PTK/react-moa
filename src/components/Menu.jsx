@@ -8,6 +8,7 @@ import {
   SettingOutlined,
   ProjectOutlined,
 } from "@ant-design/icons";
+import { confirmLogout } from "../utils/sweetalert";
 import useAuth from "../features/auth/auth.hook";
 import useAuthStore from "../stores/auth.store";
 
@@ -63,8 +64,10 @@ const AppMenu = () => {
       <Menu
         onClick={(item) => {
           if (item.key === "logout") {
-            navigate("/");
-            logout();
+            confirmLogout(() => {
+              navigate("/");
+              logout();
+            });
           } else {
             navigate(item.key);
           }

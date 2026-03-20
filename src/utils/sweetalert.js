@@ -26,6 +26,23 @@ export const showError = (message = 'เกิดข้อผิดพลาด�
     });
 };
 
+export const confirmAction = (title, text, onConfirm) => {
+    Swal.fire({
+        title: title,
+        text: text,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'ยืนยัน',
+        cancelButtonText: 'ยกเลิก',
+        confirmButtonColor: '#d33',
+        allowOutsideClick: false
+    }).then((result) => {
+        if (result.isConfirmed) {
+            onConfirm();
+        }
+    });
+};
+
 export const confirmLogout = (onConfirm) => {
     Swal.fire({
         title: 'ออกจากระบบ',
@@ -33,6 +50,23 @@ export const confirmLogout = (onConfirm) => {
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'ออกจากระบบ',
+        cancelButtonText: 'ยกเลิก',
+        confirmButtonColor: '#d33',
+        allowOutsideClick: false
+    }).then((result) => {
+        if (result.isConfirmed) {
+            onConfirm();
+        }
+    });
+};
+
+export const confirmDelete = (onConfirm) => {
+    Swal.fire({
+        title: 'ลบข้อมูล',
+        text: 'คุณต้องการลบข้อมูลนี้ใช่หรือไม่?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'ลบ',
         cancelButtonText: 'ยกเลิก',
         confirmButtonColor: '#d33',
         allowOutsideClick: false
