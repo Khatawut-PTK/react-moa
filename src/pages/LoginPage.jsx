@@ -1,4 +1,3 @@
-// src/pages/LoginPage.jsx
 import {
   Button,
   Checkbox,

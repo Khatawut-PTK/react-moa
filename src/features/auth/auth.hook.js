@@ -1,4 +1,3 @@
-// src/features/auth/auth.hook.js
 import { useState, useEffect } from "react";
 import authApi from "./auth.api";
 
@@ -16,7 +15,6 @@ const useAuth = () => {
                     setLoading(false);
                     return;
                 }
-
                 // const response = await authApi.me();
                 // setUser(response.data);
             } catch (err) {

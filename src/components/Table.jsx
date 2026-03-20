@@ -118,7 +118,7 @@
 
 // export default AppTable;
 // components/AppTable.jsx
-import { Button, Space, Typography, Input, Flex } from "antd";
+import { Button, Space, Typography, Input, Flex, Switch } from "antd";
 import BaseTable from "./BaseTable";
 
 const { Title } = Typography;
