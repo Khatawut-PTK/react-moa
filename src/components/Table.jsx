@@ -1,4 +1,4 @@
-import { Button, Space, Typography, Input, Flex } from "antd";
+import { Button, Space, Typography, Input, Flex, Upload } from "antd";
 import {
   PlusOutlined,
   ImportOutlined,
@@ -47,18 +47,20 @@ const AppTable = ({
               {addButtonLabel}
             </Button>
           )}
+
           {onImport !== false && (
-            <Button
-              onClick={typeof onImport === "function" ? onImport : undefined}
-              icon={<ImportOutlined />}
+            <Upload
+              accept=".xlsx, .xls, .csv"
+              showUploadList={false}
+              beforeUpload={onImport}
             >
-              นำเข้าข้อมูล
-            </Button>
+              <Button icon={<ImportOutlined />}>นำเข้าข้อมูล</Button>
+            </Upload>
           )}
           {onExport !== false && (
             <Button
-              onClick={typeof onExport === "function" ? onExport : undefined}
               icon={<ExportOutlined />}
+              onClick={() => console.log("Export Data")}
             >
               ส่งออกข้อมูล
             </Button>

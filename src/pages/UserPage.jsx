@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import AppTable from "../components/Table";
 import userApi from "../features/user/user.api";
-import { Switch, Popconfirm } from "antd";
+import { Switch, Popconfirm, Space, Button } from "antd";
+import { KeyOutlined } from "@ant-design/icons";
 
 const UserPage = () => {
   const [data, setData] = useState([]);
@@ -52,6 +53,7 @@ const UserPage = () => {
         {
           title: "สถานะ",
           align: "center",
+          width: 150,
           render: (_, record) => (
             <Popconfirm
               title="ยืนยันการเปลี่ยนสถานะ?"
@@ -69,6 +71,19 @@ const UserPage = () => {
                 unCheckedChildren="ระงับ"
               />
             </Popconfirm>
+          ),
+        },
+        {
+          title: "จัดการ",
+          align: "center",
+          width: 200,
+
+          render: () => (
+            <Space>
+              <Button size="small" icon={<KeyOutlined />}>
+                รีเซ็ตรหัสผ่าน
+              </Button>
+            </Space>
           ),
         },
       ]}

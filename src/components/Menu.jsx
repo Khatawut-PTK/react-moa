@@ -34,6 +34,20 @@ const AppMenu = () => {
       key: "/project",
       icon: <ProjectOutlined />,
       label: "โครงการ",
+      children: [
+        {
+          key: "/project",
+          label: "โครงการทั้งหมด",
+        },
+        {
+          key: "/project/ongoing",
+          label: "โครงการที่กำลังดำเนินการ",
+        },
+        {
+          key: "/project/completed",
+          label: "โครงการที่เสร็จสิ้น",
+        },
+      ],
     },
     { type: "divider" },
     ...(isAdmin

@@ -28,7 +28,6 @@ const MainLayout = () => {
             <Outlet />
           </Content>
         </Layout>
-        {/* <Footer /> */}
       </Layout>
     </>
   );
