@@ -80,7 +80,7 @@ const UserPage = () => {
 
           render: () => (
             <Space>
-              <Button size="small" icon={<KeyOutlined />}>
+              <Button size="small" type="primary" icon={<KeyOutlined />}>
                 รีเซ็ตรหัสผ่าน
               </Button>
             </Space>

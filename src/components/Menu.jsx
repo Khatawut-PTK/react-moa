@@ -7,6 +7,10 @@ import {
   LogoutOutlined,
   SettingOutlined,
   ProjectOutlined,
+  FileTextOutlined,
+  HistoryOutlined,
+  FileSyncOutlined,
+  CheckCircleOutlined,
 } from "@ant-design/icons";
 import { confirmLogout } from "../utils/sweetalert";
 import useAuth from "../features/auth/auth.hook";
@@ -37,14 +41,17 @@ const AppMenu = () => {
       children: [
         {
           key: "/project",
+          icon: <ProjectOutlined />,
           label: "โครงการทั้งหมด",
         },
         {
           key: "/project/ongoing",
+          icon: <FileSyncOutlined />,
           label: "โครงการที่กำลังดำเนินการ",
         },
         {
           key: "/project/completed",
+          icon: <CheckCircleOutlined />,
           label: "โครงการที่เสร็จสิ้น",
         },
       ],
@@ -53,15 +60,26 @@ const AppMenu = () => {
     ...(isAdmin
       ? [
           {
-            key: "/user",
-            icon: <UserOutlined />,
-            label: "ผู้ใช้งาน",
-          },
-          { type: "divider" },
-          {
             key: "/setting",
             icon: <SettingOutlined />,
             label: "ตั้งค่า",
+            children: [
+              {
+                key: "/user",
+                icon: <UserOutlined />,
+                label: "ผู้ใช้งาน",
+              },
+              {
+                key: "/report",
+                icon: <FileTextOutlined />,
+                label: "รายงาน",
+              },
+              {
+                key: "/log",
+                icon: <HistoryOutlined />,
+                label: "ประวัติการใช้งาน",
+              },
+            ],
           },
           { type: "divider" },
         ]

@@ -9,10 +9,11 @@ createRoot(document.getElementById("root")).render(
         colorBgLayout: "transparent",
         fontFamily: "Prompt, sans-serif",
         fontSize: 13,
+        borderRadius: 10,
       },
       components: {
         Table: {
-          headerBg: "#5e84d7ff",
+          headerBg: "#1c3d73ff",
           headerColor: "#ffffff",
         },
       },

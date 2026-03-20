@@ -5,6 +5,8 @@ import UserPage from "./pages/UserPage";
 import Dashboard from "./pages/DashboardPage";
 import Project from "./pages/ProjectPage";
 import Setting from "./pages/SettingPage";
+// import Report from "./pages/ReportPage";
+// import Log from "./pages/LogPage";
 
 function App() {
   return (
@@ -18,7 +20,11 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/user" element={<UserPage />} />
           <Route path="/project" element={<Project />} />
+          <Route path="/project/ongoing" element={<Project />} />
+          <Route path="/project/completed" element={<Project />} />
           <Route path="/setting" element={<Setting />} />
+          {/* <Route path="/report" element={<Report />} />
+          <Route path="/log" element={<Log />} /> */}
         </Route>
       </Routes>
     </Router>

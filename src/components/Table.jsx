@@ -43,6 +43,8 @@ const AppTable = ({
             <Button
               onClick={typeof onAdd === "function" ? onAdd : undefined}
               icon={<PlusOutlined />}
+              type="primary"
+              size="small"
             >
               {addButtonLabel}
             </Button>
@@ -54,12 +56,16 @@ const AppTable = ({
               showUploadList={false}
               beforeUpload={onImport}
             >
-              <Button icon={<ImportOutlined />}>นำเข้าข้อมูล</Button>
+              <Button type="primary" icon={<ImportOutlined />} size="small">
+                นำเข้าข้อมูล
+              </Button>
             </Upload>
           )}
           {onExport !== false && (
             <Button
+              type="primary"
               icon={<ExportOutlined />}
+              size="small"
               onClick={() => console.log("Export Data")}
             >
               ส่งออกข้อมูล

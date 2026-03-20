@@ -1,8 +1,7 @@
 import React from "react";
-import { Typography, Flex } from "antd";
+import { Typography, Flex, Row, Col } from "antd";
 import dataItems from "../mooc/dataItems";
 import CardDashboard from "../components/CardDashboard";
-import Charts from "../components/Charts";
 
 const { Title } = Typography;
 
@@ -18,18 +17,13 @@ const Dashboard = () => {
       >
         ภาพรวมผลการดำเนินงาน
       </Title>
-      <Flex
-        style={{
-          borderRadius: 20,
-          display: "grid",
-          gridTemplateColumns: "repeat(4, 1fr)",
-          gap: 20,
-        }}
-      >
+      <Row gutter={[20, 20]} style={{ borderRadius: 20 }}>
         {dataItems.map((item, index) => (
-          <CardDashboard key={index} item={item} />
+          <Col xs={24} sm={12} lg={6} key={index}>
+            <CardDashboard item={item} />
+          </Col>
         ))}
-      </Flex>
+      </Row>
       <Flex
         style={{
           marginTop: 20,
@@ -38,7 +32,9 @@ const Dashboard = () => {
           alignItems: "stretch",
         }}
       >
-        <Flex style={{ flex: 2, minWidth: 0 }}>{/* <Charts /> */}</Flex>
+        {/* <Flex style={{ flex: 2, minWidth: 0 }}>
+          <Charts />
+        </Flex> */}
         {/* <Flex style={{ flex: 1, minWidth: 0 }}>
           <Kpi />
         </Flex> */}
