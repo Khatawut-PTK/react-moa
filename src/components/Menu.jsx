@@ -35,7 +35,7 @@ const AppMenu = () => {
         ]
       : []),
     {
-      key: "/project",
+      key: "project",
       icon: <ProjectOutlined />,
       label: "โครงการ",
       children: [

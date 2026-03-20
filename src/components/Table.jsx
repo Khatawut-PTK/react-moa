@@ -5,6 +5,7 @@ import {
   ExportOutlined,
 } from "@ant-design/icons";
 import BaseTable from "./BaseTable";
+import BaseButton from "./BaseButton";
 
 const { Title } = Typography;
 
@@ -16,7 +17,7 @@ const AppTable = ({
   onAdd,
   onImport,
   onExport,
-  addButtonLabel = "เพิ่มผู้ใช้งาน",
+  addButtonLabel,
   ...props
 }) => {
   return (
@@ -40,14 +41,9 @@ const AppTable = ({
         />
         <Space>
           {onAdd !== false && (
-            <Button
-              onClick={typeof onAdd === "function" ? onAdd : undefined}
-              icon={<PlusOutlined />}
-              type="primary"
-              size="small"
-            >
-              {addButtonLabel}
-            </Button>
+            <BaseButton variant="add" onClick={onAdd} icon={<PlusOutlined />}>
+              {addButtonLabel || "เพิ่มข้อมูล"}
+            </BaseButton>
           )}
 
           {onImport !== false && (
@@ -56,20 +52,15 @@ const AppTable = ({
               showUploadList={false}
               beforeUpload={onImport}
             >
-              <Button type="primary" icon={<ImportOutlined />} size="small">
-                นำเข้าข้อมูล
-              </Button>
+              <BaseButton variant="import" icon={<ImportOutlined />}>
+                {addButtonLabel || "นำเข้าข้อมูล"}
+              </BaseButton>
             </Upload>
           )}
           {onExport !== false && (
-            <Button
-              type="primary"
-              icon={<ExportOutlined />}
-              size="small"
-              onClick={() => console.log("Export Data")}
-            >
-              ส่งออกข้อมูล
-            </Button>
+            <BaseButton variant="export" icon={<ExportOutlined />}>
+              {addButtonLabel || "ส่งออกข้อมูล"}
+            </BaseButton>
           )}
         </Space>
       </Flex>

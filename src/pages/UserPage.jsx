@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import AppTable from "../components/Table";
 import userApi from "../features/user/user.api";
-import { Switch, Popconfirm, Space, Button } from "antd";
+import { Switch, Popconfirm, Space } from "antd";
 import { KeyOutlined } from "@ant-design/icons";
+import BaseButton from "../components/BaseButton";
 
 const UserPage = () => {
   const [data, setData] = useState([]);
@@ -80,9 +81,13 @@ const UserPage = () => {
 
           render: () => (
             <Space>
-              <Button size="small" type="primary" icon={<KeyOutlined />}>
+              <BaseButton
+                variant="resetPassword"
+                size="small"
+                icon={<KeyOutlined />}
+              >
                 รีเซ็ตรหัสผ่าน
-              </Button>
+              </BaseButton>
             </Space>
           ),
         },
