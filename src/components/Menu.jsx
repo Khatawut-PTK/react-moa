@@ -88,6 +88,9 @@ const AppMenu = () => {
       key: "logout",
       icon: <LogoutOutlined />,
       label: "ออกจากระบบ",
+      style: {
+        marginTop: "auto",
+      },
     },
   ];
 

@@ -9,6 +9,12 @@ const Sidebar = () => {
     <>
       <Sider
         collapsible
+        breakpoint="lg"
+        collapsedWidth={0}
+        zeroWidthTriggerStyle={{
+          top: "auto",
+          bottom: "20px",
+        }}
         width={200}
         style={{
           background: "#fff",
