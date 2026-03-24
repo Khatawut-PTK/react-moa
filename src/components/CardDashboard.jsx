@@ -1,58 +1,64 @@
 import React from "react";
-import { Card, Typography, Flex } from "antd";
+import { Card, Typography, Flex, Skeleton } from "antd";
 import IconDashboard from "./IconDashboard";
 
-const { Title } = Typography;
+const { Text } = Typography;
 
-const CardDashboard = ({ item }) => {
+const CardDashboard = ({ item, loading }) => {
   return (
     <Card
+      hoverable
+      loading={!loading}
+      styles={{
+        body: { padding: "20px 24px" },
+      }}
       style={{
-        backgroundColor: "#ffffffff",
-        boxShadow: "0 6px 16px rgba(0, 0, 0, 0.12)",
-        color: "#545252ff",
-        borderRadius: 10,
+        borderRadius: 12,
         border: "none",
+        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.05)",
+        height: "100%",
       }}
     >
-      <Flex align="center" gap={16}>
-        <Flex align="center" justify="center">
-          <IconDashboard title={item.title} />
+      <Flex align="center" gap={20}>
+        <Flex
+          align="center"
+          justify="center"
+          style={{
+            width: 48,
+            height: 48,
+            backgroundColor: "#f5f5f5",
+            borderRadius: 10,
+          }}
+        >
+          <IconDashboard title={item.title} style={{ fontSize: 24 }} />
         </Flex>
-        <Flex vertical>
-          <Title
-            level={3}
+
+        <Flex vertical flex={1}>
+          <Text
             style={{
-              margin: 0,
+              color: "#8c8c8c",
               fontSize: 13,
-              fontWeight: 400,
-              color: "#9f9f9fff",
+              marginBottom: 4,
             }}
           >
             {item.title}
-          </Title>
+          </Text>
+
           <Flex align="baseline" gap={8}>
-            <Title
-              level={4}
+            <Text
+              strong
               style={{
-                margin: 0,
-                fontSize: 15,
-                fontWeight: 800,
-                color: "#2b2a2aff",
+                fontSize: 24,
+                color: "#262626",
               }}
             >
               {item.value}
-            </Title>
-            <Title
-              style={{
-                margin: 0,
-                fontSize: 10,
-                fontWeight: 400,
-                color: "#9f9f9fff",
-              }}
-            >
-              {item.description}
-            </Title>
+            </Text>
+            {item.description && (
+              <Text type="secondary" style={{ fontSize: 12 }}>
+                {item.description}
+              </Text>
+            )}
           </Flex>
         </Flex>
       </Flex>

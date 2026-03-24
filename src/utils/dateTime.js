@@ -1,6 +1,6 @@
 const formatDateTime = (date) => {
     return date.toLocaleString('th-TH', {
-      weekday: 'narrow', 
+      weekday: 'long', 
       year: 'numeric',
       month: 'short',
       day: 'numeric',

@@ -1,5 +1,5 @@
 import BaseModal from "./BaseModal";
-import { Form, Input } from "antd";
+import { Form, Input, Divider } from "antd";
 
 const ModalResetPassword = ({
   title,
@@ -45,6 +45,7 @@ const ModalResetPassword = ({
       okText={okText}
       cancelText={cancelText}
     >
+      <Divider />
       <Form form={form} layout="horizontal">
         <Form.Item
           label="รหัสผ่านใหม่"
@@ -77,6 +78,7 @@ const ModalResetPassword = ({
             }}
           />
         </Form.Item>
+        <Divider />
       </Form>
     </BaseModal>
   );
